@@ -47,6 +47,7 @@ action('retry++').
 action('broadcast idle_err_msg').
 action('broadcast moni_err_msg').
 action('broadcast init_err_msg').
+action('lock_doors').
 
 %var
 %var(name, type)
@@ -106,12 +107,6 @@ list_to_set(EventList, EventSet).
 
 %extended rules
 
-%actions(ActionSet) :- 
+%actions(ActionSet) :-
    % findall(Action1, action(Action), ActionList1),
    % findall(Action2, action(Action2,Variable)
-            
-            
-            
-            
-            
-            
