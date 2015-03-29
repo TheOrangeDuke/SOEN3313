@@ -22,6 +22,8 @@ event(psi_ok).
 
 %var
 
+%guards
+
 %transitions
 %transition(state1,state2,event,guard,action)
 transition(boot_hw,senchk,hw_ok,null,null)

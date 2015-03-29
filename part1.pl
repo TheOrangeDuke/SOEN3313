@@ -39,6 +39,13 @@ var(init_err_msg, string).
 var(idle_err_msg, string).
 var(moni_err_msg, string).
 
+%guards
+guard('retry<3').
+guard('retry>2').
+guard('inlockdown').
+guard('!inlockdown').
+
+
 %transitions
 %transition(state1,state2,event,guard,action)
 transition(dormant,exit,kill,null,null).
