@@ -19,7 +19,6 @@ transition(monidle, regulate_environment, no_contagion, null, null).
 transition(regulate_environment, monidle, after_100ms, null, null).
 transition(regulate_environment, lockdown, contagion_alert, null, 'broadcast facility_crit_mesg, inlockdown :=true').
 transition(lockdown, monidle, purge_succ, null, 'inlockdown := false').
-
 transition(monitoring, error_diagnosis, monitor_crash, !'inlockdown', 'broadcast moni_err_msg').
 transition(monitoring, exit, kill, !'inlockdown', null).
 
