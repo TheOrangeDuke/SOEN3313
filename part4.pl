@@ -5,6 +5,11 @@ state(alt_temp).
 state(alt_psi).
 state(risk_assess).
 state(safe_status).
+superstate(lockdown, prep_vpurge).
+superstate(lockdown, alt_temp).
+superstate(lockdown, alt_psi).
+superstate(lockdown, risk_assess).
+superstate(lockdown, safe_status).
 
 %events
 event(initiate_purge).
