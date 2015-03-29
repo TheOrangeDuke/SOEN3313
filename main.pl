@@ -1,3 +1,10 @@
+%includes
+include(part1).
+include(part2).
+include(part3).
+include(part4).
+include(part5).
+
 %rules
 
 %from slides
