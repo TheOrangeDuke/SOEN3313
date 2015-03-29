@@ -14,14 +14,17 @@ event(contagion_alert).
 event(purge_succ).
 
 %transition(state1,state2,event,guard,action)
-action('broadcast facility_crit_mesg').
-action(monidle, regulate_environment, no_contagion, null, null).
-action(regulate_environment, monidle, after_100ms, null, null).
-action(regulate_environment, lockdown, contagion_alert, null, 'boardcast facility_crit_mesg, inlockdown :=true').
-action(lockdown, monidle, purge_succ, null, 'inlockdown := false').
+transition('broadcast facility_crit_mesg').
+transition(monidle, regulate_environment, no_contagion, null, null).
+transition(regulate_environment, monidle, after_100ms, null, null).
+transition(regulate_environment, lockdown, contagion_alert, null, 'broadcast facility_crit_mesg, inlockdown :=true').
+transition(lockdown, monidle, purge_succ, null, 'inlockdown := false').
 
-action(monitoring, error_diagnosis, monitor_crash, !'inlockdown', 'broadcast moni_err_msg').
-action(monitoring, exit, kill, !'inlockdown', null).
+transition(monitoring, error_diagnosis, monitor_crash, !'inlockdown', 'broadcast moni_err_msg').
+transition(monitoring, exit, kill, !'inlockdown', null).
+
+%actions
+action('broadcast facility_crit_mesg').
 
 %var
 var(inlockdown, bool).
