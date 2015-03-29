@@ -10,8 +10,7 @@ superstate(init,senchk).
 superstate(init,tchk).
 superstate(init,psichk).
 superstate(init,ready).
-
-%inital state
+%inital_state
 initial_state(boot_hw).
 
 %events
@@ -20,9 +19,14 @@ event(senok).
 event(t_ok).
 event(psi_ok).
 
-%var
-
 %guards
+
+%actions
+%action(name)
+%action(name, variable)
+
+%vars
+%var(name, type)
 
 %transitions
 %transition(state1,state2,event,guard,action)

@@ -7,8 +7,7 @@ state(idle).
 state(monitoring).
 state(error_diagnosis).
 state(safe_shutdown).
-
-%inital state
+%inital_state
 initial_state(dormant).
 
 %events
@@ -24,6 +23,12 @@ event(idle_crash).
 event(idle_rescue).
 event(moni_rescue).
 
+%guards
+guard('retry<3').
+guard('retry>2').
+guard('inlockdown').
+guard('!inlockdown').
+
 %actions
 %action(name)
 %action(name, variable)
@@ -32,19 +37,12 @@ action('broadcast idle_err_msg').
 action('broadcast moni_err_msg').
 action('broadcast init_err_msg').
 
-%var
+%vars
 %var(name, type)
 var(retry, int).
 var(init_err_msg, string).
 var(idle_err_msg, string).
 var(moni_err_msg, string).
-
-%guards
-guard('retry<3').
-guard('retry>2').
-guard('inlockdown').
-guard('!inlockdown').
-
 
 %transitions
 %transition(state1,state2,event,guard,action)
