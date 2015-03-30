@@ -37,6 +37,6 @@ transition(prep_vpurge, alt_temp, initiate_purge, null, 'lock_doors').
 transition(prep_vpurge, alt_psi, initiate_purge, null, 'lock_doors').
 transition(alt_temp, risk_assess, tcyc_comp, null, null).
 transition(alt_psi, risk_assess, psicyc_comp, null, null).
-transition(risk_assess, prep_vpurge, null, 'risk>=1.0', null).
-transition(risk_assess, safe_status, null, 'risk<1.0', 'unlock_doors').
+transition(risk_assess, prep_vpurge, null, 'risk>=0.01', null).
+transition(risk_assess, safe_status, null, 'risk<0.01', 'unlock_doors').
 transition(safe_status, exit, null, null, null).
