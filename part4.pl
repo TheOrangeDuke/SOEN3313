@@ -18,7 +18,7 @@ event(initiate_purge).
 event(tcyc_comp).
 event(psicyc_comp).
 
-$guards
+%! guards
 guard('risk>=1.0').
 guard('risk<1.0').
 

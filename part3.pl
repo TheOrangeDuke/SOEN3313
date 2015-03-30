@@ -15,7 +15,7 @@ event(after_100ms).
 event(contagion_alert).
 event(purge_succ).
 
-$guards
+%! guards
 guard('inlockdown').
 
 %! actions
