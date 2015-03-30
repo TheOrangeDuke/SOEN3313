@@ -1,5 +1,5 @@
-%facts
-%states
+%! facts
+%! states
 state(boot_hw).
 state(senchk).
 state(tchk).
@@ -10,26 +10,26 @@ superstate(init,senchk).
 superstate(init,tchk).
 superstate(init,psichk).
 superstate(init,ready).
-%inital_state
+%! inital_state
 initial_state(boot_hw).
 
-%events
+%! events
 event(hw_ok).
 event(senok).
 event(t_ok).
 event(psi_ok).
 
-%guards
+%! guards
 
-%actions
-%action(name).
-%action(name, variable).
+%! actions
+%! action(name).
+%! action(name, variable).
 
-%vars
-%var(name, type).
+%! vars
+%! var(name, type).
 
-%transitions
-%transition(state1,state2,event,guard,action).
+%! transitions
+%! transition(state1,state2,event,guard,action).
 transition(boot_hw,senchk,hw_ok,null,null).
 transition(senchk,tchk,senok,null,null).
 transition(tchk,psichk,t_ok,null,null).
