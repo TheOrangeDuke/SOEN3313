@@ -19,8 +19,8 @@ event(tcyc_comp).
 event(psicyc_comp).
 
 %! guards
-guard('risk>=1.0').
-guard('risk<1.0').
+guard('risk>=0.01').
+guard('risk<0.01').
 
 %! actions
 %! action(name)
