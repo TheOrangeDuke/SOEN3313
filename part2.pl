@@ -22,15 +22,15 @@ event(psi_ok).
 %guards
 
 %actions
-%action(name)
-%action(name, variable)
+%action(name).
+%action(name, variable).
 
 %vars
-%var(name, type)
+%var(name, type).
 
 %transitions
-%transition(state1,state2,event,guard,action)
-transition(boot_hw,senchk,hw_ok,null,null)
-transition(senchk,tchk,senok,null,null)
-transition(tchk,psichk,t_ok,null,null)
-transition(psichk,ready,psi_ok,null,null)
+%transition(state1,state2,event,guard,action).
+transition(boot_hw,senchk,hw_ok,null,null).
+transition(senchk,tchk,senok,null,null).
+transition(tchk,psichk,t_ok,null,null).
+transition(psichk,ready,psi_ok,null,null).

@@ -1,5 +1,5 @@
-%facts
-%states
+%! facts
+%! states
 state(dormant).
 state(exit).
 state(init).
@@ -7,10 +7,10 @@ state(idle).
 state(monitoring).
 state(error_diagnosis).
 state(safe_shutdown).
-%inital_state
+%! inital_state
 initial_state(dormant).
 
-%events
+%! events
 event(kill).
 event(start).
 event(init_ok).
@@ -23,29 +23,29 @@ event(idle_crash).
 event(idle_rescue).
 event(moni_rescue).
 
-%guards
+%! guards
 guard('retry<3').
 guard('retry>2').
 guard('inlockdown').
 guard('!inlockdown').
 
-%actions
-%action(name)
-%action(name, variable)
+%! actions
+%! action(name)
+%! action(name, variable)
 action('retry++').
 action('broadcast idle_err_msg').
 action('broadcast moni_err_msg').
 action('broadcast init_err_msg').
 
-%vars
-%var(name, type)
+%! vars
+%! var(name, type)
 var(retry, int).
 var(init_err_msg, string).
 var(idle_err_msg, string).
 var(moni_err_msg, string).
 
-%transitions
-%transition(state1,state2,event,guard,action)
+%! transitions
+%! transition(state1,state2,event,guard,action)
 transition(dormant,exit,kill,null,null).
 transition(init,exit,kill,null,null).
 transition(dormant,init,start,null,null).
