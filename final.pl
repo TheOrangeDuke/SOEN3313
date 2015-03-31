@@ -250,7 +250,33 @@ list_to_set(EventList, EventSet).
 
 %! 1 --------------------------------------------------------------------------
 
-is_loop(Event, Guard) :- transition(StateA, StateA, Event, Guard, _).
+is_loop(Event,Guard):- transition(S1,S2,Event,Guard,_), is_loop_2(S1,S2).
+is_loop(S1,S2):- transition(S2,S1,_,_,_).
+is_loop_2(S1,S2):- transition(S2,S3,_,_,_), is_loop_2(S1,S3).
+
+/**
+%! Depth First Search implementation, not finished
+is_loop(Event, Guard) :- transition(S1, S2, Event, Guard, _), is_loop_dfs(S1,S2,[],[]).
+is_loop_dfs(INIT,INIT,_,_).
+is_loop_dfs(INIT,CURR,Known,RetKnown):-
+                                     append(CURR,Known,NewKnown),
+                                     findall(
+                                     [CURR,MIDDLEMAN],
+                                     (
+                                          transition(CURR,MIDDLEMAN,_,_,_),
+                                          not_visited(MIDDLEMAN,NewKnown),
+                                          is_loop_dfs(INIT,MIDDLEMAN,NewKnown2),
+                                          append(NewKnown)
+                                     ),
+                                     Transitions),
+
+
+
+is_empty([]).
+not_visited(E, []).
+not_visited(E, [E|T]):- !,fail.
+not_visited(E, [H|T]):- not_visited(E,T).
+**/
 
 %! 2 --------------------------------------------------------------------------
 
@@ -260,6 +286,7 @@ all_loops(Set) :- findall([Event,Guard], is_loop(Event,Guard), LoopList),
 %! 3 --------------------------------------------------------------------------
 
 is_edge(Event, Guard) :- transition(_,_,Event,Guard,_).
+all_edges(Set) :- findall([E,G], is_edge(E,G),L),list_to_set(L,Set).
 
 %! 4 --------------------------------------------------------------------------
 
@@ -299,7 +326,7 @@ all_init_states(L) :- findall(State, init_state(State), L).
 
 %! 11 -------------------------------------------------------------------------
 
-get_starting_state(State) :- superstate(Super, State),!,fail.
+get_starting_state(State) :- superstate(_, State),!,fail.
 get_starting_state(State) :- initial_state(State).
 
 %! 12 -------------------------------------------------------------------------
@@ -326,7 +353,7 @@ get_actions(Ret) :-  findall(Action, action(Action), Ret).
 %! 17 -------------------------------------------------------------------------
 
 get_only_guarded(Ret) :- findall([StateA,StateB],
-                            transition(StateA, StateB, null, Guard, null),
+                            (transition(StateA, StateB, null, Guard, null), Guard \== null),
                             Ret).
 
 %! 18 -------------------------------------------------------------------------
