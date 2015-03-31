@@ -1,5 +1,5 @@
 # SOEN3313
 
-IF YOU COPY OUR PROJECT AND GIVE IT TO THE TEACHER AS IS
-I WILL TRACK YOU DOWN, I WILL FIND YOU, AND WHEN I DO,
-I WILL KILL YOU.
+The Specs are in Specifications.pdf
+The Final prolog database is in final.pl.
+Each of the parts have their own diagram in partX.png.
